@@ -17,5 +17,23 @@
             <li><a href="{{ link }}"> {{ name }}</a></li>
             {% endfor %}
         </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+                <li>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ user.username }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'userena_signout' %}">
+                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                    </a>
+                </li>
+            {% else %}
+                <li> <a href="{% url 'userena_signin' %}">Login</a> </li>
+                <li> <a href="{% url 'userena_signup' %}">Sign up</a> </li>
+            {% endif %}
+        </ul>
     </div><!-- /.navbar-collapse -->
 </nav>
