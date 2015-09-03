@@ -9,6 +9,16 @@
 
     <meta charset="utf-8" />
 
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- common css -->
+    <link href="http://static.jackon.me/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet"></link>
+    <link href="http://static.jackon.me/bootstrap-3.3.5/css/bootstrap-theme.min.css" rel="stylesheet"></link>
+    <link href="http://static.jackon.me/Font-Awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet"></link>
+
+    <!-- site css -->
     <link href="{% static "css/site.css" %}" rel="stylesheet">
 
     {% block css %}{% endblock %}
@@ -17,8 +27,18 @@
 
 <body>
 
-    {% block content %}{% endblock %}
+    {% include 'navbar.html' %}
 
+    <div class="container">
+    {% block content %}{% endblock %}
+    </div>
+
+
+    <!-- common js -->
+    <script src="http://static.jackon.me/jquery-1.11.3/jquery-1.11.3.min.js"></script>
+    <script src="http://static.jackon.me/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- site js -->
     <script src="{% static "js/site.js" %}"></script>
 
     {% block js %}{% endblock %}

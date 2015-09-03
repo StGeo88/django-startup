@@ -106,3 +106,7 @@ $ python manage.py migrate
 $ python manage.py createsuperuser --username=jackon --email=jiekunyang@gmail.com
 $ python manage.py runserver 0.0.0.0:8000
 ```
+
+## 快速使用
+
+1. `base.context_processors.site_info.py` 中配置 brand logo 与 navbar
