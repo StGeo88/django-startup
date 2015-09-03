@@ -97,6 +97,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             join(BASE_DIR, 'base/templates'),
+            join(BASE_DIR, 'accounts/templates'),  # load before userena
         ],
         'APP_DIRS': True,
         'OPTIONS': {

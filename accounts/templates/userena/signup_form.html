@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}
+<title> {% trans "Signup" %} </title>
+{% endblock %}
+
+{% block content %}
+
+{% if form.non_field_errors %}
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    {{ form.non_field_errors.as_text }}
+</div>
+{% endif %}
+
+<div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3">
+
+<form action="" method="post" class="form-signup" role=form> {% csrf_token %}
+
+  <!-- chrome autocomplete bug -->
+  <input style="display:none">
+  <input type="password" style="display:none">
+   <!-- chrome autocomplete bug -->
+
+  <fieldset>
+    <legend class="form-signup-heading">{% trans "Create your personal account!" %}</legend>
+
+    <p>
+    <div class="input-group">
+        <span class="input-group-addon"> <i class="fa fa-user fa-fw"></i></span>
+        <input type="text" class="form-control" name="username" id="id_username" tabindex="1" autofocus
+            placeholder="{{ form.username.label }}"
+            value="{{ form.username.value|default:"" }}"/>
+    </div>
+    <p class="help-block">
+        <p class="text-danger">
+            {{ form.username.errors.as_text|default:""}}
+        </p>
+    </p>
+    </p>
+
+    <p>
+    <div class="input-group">
+        <span class="input-group-addon"> <i class="fa fa-envelope fa-fw"></i></span>
+        <input type="text" class="form-control" name="email" id="id_email" tabindex="2"
+            placeholder="{{ form.email.label }}"
+            value="{{ form.email.value|default:"" }}"/>
+    </div>
+    <p class="help-block">
+        <p class="text-danger">
+            {{ form.email.errors.as_text|default:""}}
+        </p>
+        <!-- {% trans "You will occasionally receive account related emails. We promise not to share your email with anyone." %} -->
+    </p>
+    </p>
+
+    <p>
+    <div class="input-group">
+        <span class="input-group-addon"> <i class="fa fa-lock fa-fw"></i></span>
+        <input type="password" class="form-control" name="password1" id="id_password1" tabindex="3"
+            placeholder="{{ form.password1.label }}"
+            value="{{ form.password1.value|default:"" }}"/>
+    </div>
+    <p class="help-block">
+        <p class="text-danger">
+            {{ form.password1.errors.as_text|default:""}}
+        </p>
+        <!-- {% trans "Use at least one lowercase letter, one numeral, and seven characters." %} -->
+    </p>
+    </p>
+
+    <p>
+    <div class="input-group">
+        <span class="input-group-addon"> <i class="fa fa-lock fa-fw"></i></span>
+        <input type="password" class="form-control" name="password2" id="id_password2" tabindex="4"
+            placeholder="{{ form.password2.label }}"
+            value="{{ form.password2.value|default:"" }}"
+            />
+    </div>
+    <p class="help-block">
+        <p class="text-danger">
+            {{ form.password2.errors.as_text|default:""}}
+        </p>
+    </p>
+    </p>
+
+  </fieldset>
+
+  <input type="submit" class="btn btn-lg btn-primary btn-block" value="{% trans "Signup" %}"  tabindex="5"/>
+</form>
+</div>
+
+{% endblock %}
